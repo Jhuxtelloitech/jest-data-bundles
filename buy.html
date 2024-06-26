@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Bundle Purchase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: darkblue;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .left-side {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .right-side {
+            flex: 1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label, input, select, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        input, select, button {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .caution {
+            margin-top: 20px;
+            color: red;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 60%;
+            height: auto;
+            margin-bottom: 5px;
+        }
+    </style>
+	<link rel="icon" type="image/png" href="logo.png">
+
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="logo">
+                <img src="logo.png" alt="GetDataGh Logo"> <!-- Replace with your logo path -->
+            </div>
+            <div class="info">
+                <strong>JEST DATA Bundles</strong>
+            </div>
+            <div class="info">
+                0541709799 0591132368
+            </div>
+            <!-- Button to show caution popup -->
+            <button onclick="showPopup()">Caution Messages</button>
+            
+            <div id="cautionPopup" class="popup">
+            </div>
+            
+            <div class="info">
+                1. Please note that data sent to a wrong number cannot be refunded.<br><br>
+                2. MTN Data transfer can take up to 2 hours to reflect.
+            </div>
+        </div>
+		
+      
+        <div class="right-side">
+            <!-- MTN Internet Bundles -->
+            <div class="logo">
+                <img src="mtn.png" style="border-radius: 20%;height:90px;width:90px" alt="MTN Logo"> <!-- Replace with your MTN logo path -->
+            </div>
+            <h1>MTN Internet Bundles</h1>
+            <form id="mtnBundleForm">
+                <label for="mtnBundleAmount">Select Bundle Amount</label>
+                <select id="mtnBundleAmount" name="bundleAmount">
+                    <option>Select Bundle Offer</option>
+                    <option value="1GB">1GB - 2 GHC</option>
+                    <option value="5GB">5GB - 10 GHC</option>
+                    <option value="10GB">10GB - 20 GHC</option>
+                </select>
+
+                <label for="mtnPrice">Price: GHC</label>
+                <input type="text" id="mtnPrice" name="price" readonly>
+
+                <label for="mtnPhoneNumber">Phone Number To Credit Data To</label>
+                <input type="tel" id="mtnPhoneNumber" name="phoneNumber" required>
+
+                <label for="mtnEmail">Enter Email For Payment Receipt</label>
+                <input type="email" id="mtnEmail" name="email" required>
+
+                <button type="submit">Purchase</button>
+            </form>
+            <div id="mtnMessage"></div>
+
+            <!-- Telecel Internet Bundles -->
+            <div class="logo">
+                <img src="tele.jpg" style="border-radius: 20%;height:90px;width:90px" alt="Telecel Logo"> <!-- Replace with Telecel logo path -->
+            </div>
+            <h1>Telecel Internet Bundles</h1>
+            <form id="telecelBundleForm">
+                <label for="telecelBundleAmount">Select Bundle Amount</label>
+                <select id="telecelBundleAmount" name="bundleAmount">
+                    <option>Select Bundle Offer</option>
+                    <option value="500MB">500MB - 3 GHC</option>
+                    <option value="2GB">2GB - 15 GHC</option>
+                    <option value="5GB">5GB - 30 GHC</option>
+                </select>
+
+                <label for="telecelPrice">Price: GHC</label>
+                <input type="text" id="telecelPrice" name="price" readonly>
+
+                <label for="telecelPhoneNumber">Phone Number To Credit Data To</label>
+                <input type="tel" id="telecelPhoneNumber" name="phoneNumber" required>
+
+                <label for="telecelEmail">Enter Email For Payment Receipt</label>
+                <input type="email" id="telecelEmail" name="email" required>
+
+                <button type="submit">Purchase</button>
+            </form>
+            <div id="telecelMessage"></div>
+
+            <!-- Airtel Tigo Internet Bundles -->
+            <div class="logo">
+                <img src="air.png" style="border-radius: 20%;height:90px;width:90px" alt="Airtel Tigo Logo"> <!-- Replace with Airtel Tigo logo path -->
+            </div>
+            <h1>Airtel Tigo Internet Bundles</h1>
+            <form id="airteltigoBundleForm">
+                <label for="airteltigoBundleAmount">Select Bundle Amount</label>
+                <select id="airteltigoBundleAmount" name="bundleAmount">
+                    <option>Select Bundle Offer</option>
+                    <option value="1GB">1GB - 5 GHC</option>
+                    <option value="4GB">4GB - 20 GHC</option>
+                    <option value="10GB">10GB - 50 GHC</option>
+                </select>
+
+                <label for="airteltigoPrice">Price: GHC</label>
+                <input type="text" id="airteltigoPrice" name="price" readonly>
+
+                <label for="airteltigoPhoneNumber">Phone Number To Credit Data To</label>
+                <input type="tel" id="airteltigoPhoneNumber" name="phoneNumber" required>
+
+                <label for="airteltigoEmail">Enter Email For Payment Receipt</label>
+                <input type="email" id="airteltigoEmail" name="email" required>
+
+                <button type="submit">Purchase</button>
+            </form>
+            <div id="airteltigoMessage"></div>
+        </div>
+    </div>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        // Function to handle form submission for MTN bundles
+        document.getElementById('mtnBundleForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleBundlePurchase('mtn');
+        });
+
+        // Function to handle form submission for Telecel bundles
+        document.getElementById('telecelBundleForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleBundlePurchase('telecel');
+        });
+
+        // Function to handle form submission for Airtel Tigo bundles
+        document.getElementById('airteltigoBundleForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleBundlePurchase('airteltigo');
+        });
+
+        // Function to handle bundle purchase for different networks
+        function handleBundlePurchase(network) {
+            var email = document.getElementById(network + 'Email').value;
+            var bundleAmount = document.getElementById(network + 'BundleAmount').value;
+            var price = 0;
+
+            switch (bundleAmount) {
+                // Adjust pricing logic as per your actual pricing
+                case '1GB':
+                    if (network === 'mtn') price = 2; // GHC 2.00 for MTN
+                    else if (network === 'telecel') price = 3; // GHC 3.00 for Telecel
+                    else if (network === 'airteltigo') price = 5; // GHC 5.00 for Airtel Tigo
+                    break;
+                case '5GB':
+                    if (network === 'mtn') price = 10; // GHC 10.00 for MTN
+                    else if (network === 'telecel') price = 15; // GHC 15.00 for Telecel
+                    else if (network === 'airteltigo') price = 20; // GHC 20.00 for Airtel Tigo
+                    break;
+                case '10GB':
+                    if (network === 'mtn') price = 20; // GHC 20.00 for MTN
+                    else if (network === 'telecel') price = 30; // GHC 30.00 for Telecel
+                    else if (network === 'airteltigo') price = 50; // GHC 50.00 for Airtel Tigo
+                    break;
+                default:
+                    document.getElementById(network + 'Message').textContent = "Invalid bundle selected.";
+                    return;
+            }
+
+            var handler = PaystackPop.setup({
+                key: 'pk_live_70fad375066d473701956463df62c4f2dcf2063e', // Replace with your Paystack public key
+                email: email,
+                amount: price * 100, // Paystack expects amount in kobo (multiply by 100 for GHC)
+                currency: "GHS",
+                callback: function(response) {
+                    var reference = response.reference;
+                    window.location.href = 'redirect.html';
+                },
+                onClose: function() {
+                    document.getElementById(network + 'Message').textContent = "Payment cancelled.";
+                }
+            });
+            handler.openIframe();
+        }
+
+        // Function to update price display based on selected bundle for MTN bundles
+        document.getElementById('mtnBundleAmount').addEventListener('change', function() {
+            updatePriceDisplay('mtn');
+        });
+
+        // Function to update price display based on selected bundle for Telecel bundles
+        document.getElementById('telecelBundleAmount').addEventListener('change', function() {
+            updatePriceDisplay('telecel');
+        });
+
+        // Function to update price display based on selected bundle for Airtel Tigo bundles
+        document.getElementById('airteltigoBundleAmount').addEventListener('change', function() {
+            updatePriceDisplay('airteltigo');
+        });
+
+        // Function to update price display based on selected bundle
+        function updatePriceDisplay(network) {
+            var price;
+            switch (document.getElementById(network + 'BundleAmount').value) {
+                case '1GB':
+                    price = '2 GHC';
+                    break;
+                case '5GB':
+                    price = '10 GHC';
+                    break;
+                case '10GB':
+                    price = '20 GHC';
+                    break;
+                default:
+                    price = '';
+            }
+            document.getElementById(network + 'Price').value = price;
+        }
+    </script>
+</body>
+</html>
