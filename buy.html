@@ -81,8 +81,7 @@
             margin-bottom: 5px;
         }
     </style>
-	<link rel="icon" type="image/png" href="logo.png">
-
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
     <div class="container">
@@ -107,7 +106,7 @@
                 2. MTN Data transfer can take up to 2 hours to reflect.
             </div>
         </div>
-		
+        
         <div class="right-side">
             <!-- MTN Internet Bundles -->
             <div class="logo">
@@ -118,9 +117,20 @@
                 <label for="mtnBundleAmount">Select Bundle Amount</label>
                 <select id="mtnBundleAmount" name="bundleAmount">
                     <option>Select Bundle Offer</option>
-                    <option value="1GB">1GB - 2 GHC</option>
-                    <option value="5GB">5GB - 10 GHC</option>
-                    <option value="10GB">10GB - 20 GHC</option>
+                    <option value="1GB">1GB - 6.4 GHC</option>
+                    <option value="2GB">2GB - 12 GHC</option>
+                    <option value="3GB">3GB - 18 GHC</option>
+                    <option value="4GB">4GB - 24 GHC</option>
+                    <option value="5GB">5GB - 28 GHC</option>
+                    <option value="6GB">6GB - 32 GHC</option>
+                    <option value="8GB">8GB - 41 GHC</option>
+                    <option value="10GB">10GB - 51 GHC</option>
+                    <option value="15GB">15GB - 70 GHC</option>
+                    <option value="20GB">20GB - 97 GHC</option>
+                    <option value="25GB">25GB - 120 GHC</option>
+                    <option value="30GB">30GB - 141 GHC</option>
+                    <option value="40GB">40GB - 187 GHC</option>
+                    <option value="50GB">50GB - 225 GHC</option>
                 </select>
 
                 <label for="mtnPrice">Price: GHC</label>
@@ -172,9 +182,25 @@
                 <label for="airteltigoBundleAmount">Select Bundle Amount</label>
                 <select id="airteltigoBundleAmount" name="bundleAmount">
                     <option>Select Bundle Offer</option>
-                    <option value="1GB">1GB - 5 GHC</option>
-                    <option value="4GB">4GB - 20 GHC</option>
-                    <option value="10GB">10GB - 50 GHC</option>
+                    <option value="1GB">1GB - 4 GHC</option>
+                    <option value="2GB">2GB - 8 GHC</option>
+                    <option value="3GB">3GB - 11 GHC</option>
+                    <option value="4GB">4GB - 14 GHC</option>
+                    <option value="5GB">5GB - 17 GHC</option>
+                    <option value="6GB">6GB - 20 GHC</option>
+                    <option value="7GB">7GB - 23 GHC</option>
+                    <option value="8GB">8GB - 27 GHC</option>
+                    <option value="9GB">9GB - 29 GHC</option>
+                    <option value="10GB">10GB - 32 GHC</option>
+                    <option value="15GB">15GB - 48 GHC</option>
+                    <option value="20GB">20GB - 63 GHC</option>
+                    <option value="25GB">25GB - 77 GHC</option>
+                    <option value="30GB">30GB - 80 GHC</option>
+                    <option value="40GB">40GB - 90 GHC</option>
+                    <option value="50GB">50GB - 110 GHC</option>
+                    <option value="60GB">60GB - 130 GHC</option>
+                    <option value="80GB">80GB - 155 GHC</option>
+                    <option value="100GB">100GB - 190 GHC</option>
                 </select>
 
                 <label for="airteltigoPrice">Price: GHC</label>
@@ -191,48 +217,94 @@
             <div id="airteltigoMessage"></div>
         </div>
     </div>
+
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script>
-        // Function to handle form submission for MTN bundles
         document.getElementById('mtnBundleForm').addEventListener('submit', function(event) {
             event.preventDefault();
             handleBundlePurchase('mtn');
         });
 
-        // Function to handle form submission for Telecel bundles
         document.getElementById('telecelBundleForm').addEventListener('submit', function(event) {
             event.preventDefault();
             handleBundlePurchase('telecel');
         });
 
-        // Function to handle form submission for Airtel Tigo bundles
         document.getElementById('airteltigoBundleForm').addEventListener('submit', function(event) {
             event.preventDefault();
             handleBundlePurchase('airteltigo');
         });
 
-        // Function to handle bundle purchase for different networks
         function handleBundlePurchase(network) {
-            var email = document.getElementById(network + 'Email').value;
             var bundleAmount = document.getElementById(network + 'BundleAmount').value;
-            var price = 0;
+            var price;
+            var phoneNumber = document.getElementById(network + 'PhoneNumber').value;
+            var email = document.getElementById(network + 'Email').value;
 
             switch (bundleAmount) {
-                // Adjust pricing logic as per your actual pricing
                 case '1GB':
-                    if (network === 'mtn') price = 2; // GHC 2.00 for MTN
-                    else if (network === 'telecel') price = 3; // GHC 3.00 for Telecel
-                    else if (network === 'airteltigo') price = 5; // GHC 5.00 for Airtel Tigo
+                    if (network === 'mtn') price = 6.5; // GHC 6.3 for MTN
+                    else if (network === 'airteltigo') price = 4; // GHC 4.00 for Airtel Tigo
+                    break;
+                case '2GB':
+                    if (network === 'mtn') price = 12.1; // GHC 12.00 for MTN
+                    else if (network === 'airteltigo') price = 8; // GHC 8.00 for Airtel Tigo
+                    break;
+                case '3GB':
+                    if (network === 'mtn') price = 18.1; // GHC 18.00 for MTN
+                    else if (network === 'airteltigo') price = 11; // GHC 11.00 for Airtel Tigo
+                    break;
+                case '4GB':
+                    if (network === 'mtn') price = 24.1; // GHC 24.00 for MTN
+                    else if (network === 'airteltigo') price = 14; // GHC 14.00 for Airtel Tigo
                     break;
                 case '5GB':
-                    if (network === 'mtn') price = 10; // GHC 10.00 for MTN
-                    else if (network === 'telecel') price = 15; // GHC 15.00 for Telecel
+                    if (network === 'mtn') price = 28.1; // GHC 28.00 for MTN
+                    else if (network === 'airteltigo') price = 17; // GHC 17.00 for Airtel Tigo
+                    break;
+                case '6GB':
+                    if (network === 'mtn') price = 32.1; // GHC 32.00 for MTN
                     else if (network === 'airteltigo') price = 20; // GHC 20.00 for Airtel Tigo
                     break;
+                case '8GB':
+                    if (network === 'mtn') price = 41.1; // GHC 41.00 for MTN
+                    break;
                 case '10GB':
-                    if (network === 'mtn') price = 20; // GHC 20.00 for MTN
-                    else if (network === 'telecel') price = 30; // GHC 30.00 for Telecel
-                    else if (network === 'airteltigo') price = 50; // GHC 50.00 for Airtel Tigo
+                    if (network === 'mtn') price = 51.3; // GHC 51.00 for MTN
+                    else if (network === 'airteltigo') price = 32; // GHC 32.00 for Airtel Tigo
+                    break;
+                case '15GB':
+                    if (network === 'mtn') price = 70.4; // GHC 70.00 for MTN
+                    else if (network === 'airteltigo') price = 48; // GHC 48.00 for Airtel Tigo
+                    break;
+                case '20GB':
+                    if (network === 'mtn') price = 97; // GHC 97.00 for MTN
+                    else if (network === 'airteltigo') price = 63; // GHC 63.00 for Airtel Tigo
+                    break;
+                case '25GB':
+                    if (network === 'mtn') price = 120; // GHC 120.00 for MTN
+                    else if (network === 'airteltigo') price = 77; // GHC 77.00 for Airtel Tigo
+                    break;
+                case '30GB':
+                    if (network === 'mtn') price = 141; // GHC 141.00 for MTN
+                    else if (network === 'airteltigo') price = 80; // GHC 80.00 for Airtel Tigo
+                    break;
+                case '40GB':
+                    if (network === 'mtn') price = 187; // GHC 187.00 for MTN
+                    else if (network === 'airteltigo') price = 90; // GHC 90.00 for Airtel Tigo
+                    break;
+                case '50GB':
+                    if (network === 'mtn') price = 225; // GHC 225.00 for MTN
+                    else if (network === 'airteltigo') price = 110; // GHC 110.00 for Airtel Tigo
+                    break;
+                case '60GB':
+                    if (network === 'airteltigo') price = 130; // GHC 130.00 for Airtel Tigo
+                    break;
+                case '80GB':
+                    if (network === 'airteltigo') price = 155; // GHC 155.00 for Airtel Tigo
+                    break;
+                case '100GB':
+                    if (network === 'airteltigo') price = 190; // GHC 190.00 for Airtel Tigo
                     break;
                 case '500MB':
                     price = 3; // GHC 3.00 for Telecel
@@ -287,13 +359,46 @@
                 case 'mtn':
                     switch (bundleAmount) {
                         case '1GB':
-                            price = '2 GHC';
+                            price = '6.4 GHC';
+                            break;
+                        case '2GB':
+                            price = '12 GHC';
+                            break;
+                        case '3GB':
+                            price = '18 GHC';
+                            break;
+                        case '4GB':
+                            price = '24 GHC';
                             break;
                         case '5GB':
-                            price = '10 GHC';
+                            price = '28 GHC';
+                            break;
+                        case '6GB':
+                            price = '32 GHC';
+                            break;
+                        case '8GB':
+                            price = '41 GHC';
                             break;
                         case '10GB':
-                            price = '20 GHC';
+                            price = '51 GHC';
+                            break;
+                        case '15GB':
+                            price = '70 GHC';
+                            break;
+                        case '20GB':
+                            price = '97 GHC';
+                            break;
+                        case '25GB':
+                            price = '120 GHC';
+                            break;
+                        case '30GB':
+                            price = '141 GHC';
+                            break;
+                        case '40GB':
+                            price = '187 GHC';
+                            break;
+                        case '50GB':
+                            price = '225 GHC';
                             break;
                         default:
                             price = '';
@@ -317,60 +422,70 @@
                 case 'airteltigo':
                     switch (bundleAmount) {
                         case '1GB':
-                            price = '5 GHC';
+                            price = '4 GHC';
+                            break;
+                        case '2GB':
+                            price = '8 GHC';
+                            break;
+                        case '3GB':
+                            price = '11 GHC';
                             break;
                         case '4GB':
+                            price = '14 GHC';
+                            break;
+                        case '5GB':
+                            price = '17 GHC';
+                            break;
+                        case '6GB':
                             price = '20 GHC';
                             break;
+                        case '7GB':
+                            price = '23 GHC';
+                            break;
+                        case '8GB':
+                            price = '27 GHC';
+                            break;
+                        case '9GB':
+                            price = '29 GHC';
+                            break;
                         case '10GB':
-                            price = '50 GHC';
+                            price = '32 GHC';
+                            break;
+                        case '15GB':
+                            price = '48 GHC';
+                            break;
+                        case '20GB':
+                            price = '63 GHC';
+                            break;
+                        case '25GB':
+                            price = '77 GHC';
+                            break;
+                        case '30GB':
+                            price = '80 GHC';
+                            break;
+                        case '40GB':
+                            price = '90 GHC';
+                            break;
+                        case '50GB':
+                            price = '110 GHC';
+                            break;
+                        case '60GB':
+                            price = '130 GHC';
+                            break;
+                        case '80GB':
+                            price = '155 GHC';
+                            break;
+                        case '100GB':
+                            price = '190 GHC';
                             break;
                         default:
                             price = '';
                     }
                     break;
-                default:
-                    price = '';
             }
+
             document.getElementById(network + 'Price').value = price;
         }
     </script>
-
-	<script>
-    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?92911';
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = url;
-    var options = {
-  "enabled":true,
-  "chatButtonSetting":{
-      "backgroundColor":"#4dc247",
-      "ctaText":"Online",
-      "borderRadius":"25",
-      "marginLeft":"0",
-      "marginBottom":"60",
-      "marginRight":"60",
-      "position":"right"
-  },
-  "brandSetting":{
-      "brandName":"@JestBot",
-      "brandSubTitle":"Online 24/7 Fast Reply",
-      "brandImg":"https://gossipmotion.com/wp-content/uploads/2023/08/Screenshot-2023-08-22-002638-300x300.jpg",
-      "welcomeText":"Hi there,Any Data Bundle issues?",
-      "messageText":"*Hello Jhuxtello Itech.* How can i order from the website?",
-      "backgroundColor":"#0a5f54",
-      "ctaText":"Start Chat",
-      "borderRadius":"20",
-      "autoShow":false,
-      "phoneNumber":"233541709799"
-  }
-};
-    s.onload = function() {
-        CreateWhatsappChatWidget(options);
-    };
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
-</script>
 </body>
 </html>
