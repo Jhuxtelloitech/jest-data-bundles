@@ -7,12 +7,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+             background-image: url('jd.jpg');
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+			
         }
 
         .popup {
@@ -63,12 +64,13 @@
 </head>
 <body>
     <div class="popup fade-in">
-        <h1>Payment Successful!</h1>
+        <h1>Payment Successful!</h1> <img src="v.png" style="height:110px;width:110px">
         <p>Thank you for your purchase. You will receive your data bundle within the next 2 hours.</p>
         
 		        <p>  <b>NB:</b> Please note that data sent to a wrong number cannot be refunded. </p>
 
-		<button onclick="redirectToHome()">OK</button>
+		
+		<p>Click here <button onclick="redirectToHome()"> CHAT US </button> to get your Data Bundle fast </p>
     </div>
 
     <script>
@@ -76,5 +78,42 @@
             window.location.href = 'https://wa.link/l3qcz6'; // Redirect to your desired page
         }
     </script>
+	
+	<script>
+    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?92911';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+  "enabled":true,
+  "chatButtonSetting":{
+      "backgroundColor":"#4dc247",
+      "ctaText":"Online",
+      "borderRadius":"25",
+      "marginLeft":"0",
+      "marginBottom":"60",
+      "marginRight":"60",
+      "position":"right"
+  },
+  "brandSetting":{
+      "brandName":"@JestBot",
+      "brandSubTitle":"Online 24/7 Fast Reply",
+      "brandImg":"https://gossipmotion.com/wp-content/uploads/2023/08/Screenshot-2023-08-22-002638-300x300.jpg",
+      "welcomeText":"Hi there,Any Data Bundle issues?",
+      "messageText":"*Hello Jhuxtello Itech.* I just ordered a Data Bundle?",
+      "backgroundColor":"#0a5f54",
+      "ctaText":"Start Chat",
+      "borderRadius":"20",
+      "autoShow":false,
+      "phoneNumber":"233541709799"
+  }
+};
+    s.onload = function() {
+        CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+</script>
 </body>
 </html>
