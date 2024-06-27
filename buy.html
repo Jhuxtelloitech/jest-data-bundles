@@ -108,7 +108,6 @@
             </div>
         </div>
 		
-      
         <div class="right-side">
             <!-- MTN Internet Bundles -->
             <div class="logo">
@@ -235,6 +234,15 @@
                     else if (network === 'telecel') price = 30; // GHC 30.00 for Telecel
                     else if (network === 'airteltigo') price = 50; // GHC 50.00 for Airtel Tigo
                     break;
+                case '500MB':
+                    price = 3; // GHC 3.00 for Telecel
+                    break;
+                case '2GB':
+                    price = 15; // GHC 15.00 for Telecel
+                    break;
+                case '4GB':
+                    price = 20; // GHC 20.00 for Airtel Tigo
+                    break;
                 default:
                     document.getElementById(network + 'Message').textContent = "Invalid bundle selected.";
                     return;
@@ -274,15 +282,52 @@
         // Function to update price display based on selected bundle
         function updatePriceDisplay(network) {
             var price;
-            switch (document.getElementById(network + 'BundleAmount').value) {
-                case '1GB':
-                    price = '2 GHC';
+            var bundleAmount = document.getElementById(network + 'BundleAmount').value;
+            switch (network) {
+                case 'mtn':
+                    switch (bundleAmount) {
+                        case '1GB':
+                            price = '2 GHC';
+                            break;
+                        case '5GB':
+                            price = '10 GHC';
+                            break;
+                        case '10GB':
+                            price = '20 GHC';
+                            break;
+                        default:
+                            price = '';
+                    }
                     break;
-                case '5GB':
-                    price = '10 GHC';
+                case 'telecel':
+                    switch (bundleAmount) {
+                        case '500MB':
+                            price = '3 GHC';
+                            break;
+                        case '2GB':
+                            price = '15 GHC';
+                            break;
+                        case '5GB':
+                            price = '30 GHC';
+                            break;
+                        default:
+                            price = '';
+                    }
                     break;
-                case '10GB':
-                    price = '20 GHC';
+                case 'airteltigo':
+                    switch (bundleAmount) {
+                        case '1GB':
+                            price = '5 GHC';
+                            break;
+                        case '4GB':
+                            price = '20 GHC';
+                            break;
+                        case '10GB':
+                            price = '50 GHC';
+                            break;
+                        default:
+                            price = '';
+                    }
                     break;
                 default:
                     price = '';
