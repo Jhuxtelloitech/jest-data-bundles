@@ -155,9 +155,9 @@
                 <label for="telecelBundleAmount">Select Bundle Amount</label>
                 <select id="telecelBundleAmount" name="bundleAmount">
                     <option>Select Bundle Offer</option>
-                    <option value="500MB">500MB - 3 GHC</option>
-                    <option value="2GB">2GB - 15 GHC</option>
-                    <option value="5GB">5GB - 30 GHC</option>
+                    <option value="500MB">Unlimited VPN - 34 GHC</option>
+                    <option value="2GB">700 MTN + Unlimited Telecel - 60 GHC</option>
+                    <option value="5GB">1GB - 20 GHC</option>
                 </select>
 
                 <label for="telecelPrice">Price: GHC</label>
@@ -307,10 +307,10 @@
                     if (network === 'airteltigo') price = 190; // GHC 190.00 for Airtel Tigo
                     break;
                 case '500MB':
-                    price = 3; // GHC 3.00 for Telecel
+                    price = 35; // GHC 3.00 for Telecel
                     break;
                 case '2GB':
-                    price = 15; // GHC 15.00 for Telecel
+                    price = 60; // GHC 15.00 for Telecel
                     break;
                 case '4GB':
                     price = 20; // GHC 20.00 for Airtel Tigo
@@ -407,13 +407,13 @@
                 case 'telecel':
                     switch (bundleAmount) {
                         case '500MB':
-                            price = '3 GHC';
+                            price = '34 GHC';
                             break;
                         case '2GB':
-                            price = '15 GHC';
+                            price = '60 GHC';
                             break;
                         case '5GB':
-                            price = '30 GHC';
+                            price = '20 GHC';
                             break;
                         default:
                             price = '';
@@ -487,7 +487,8 @@
             document.getElementById(network + 'Price').value = price;
         }
     </script>
-<script>
+	
+	<script>
     var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?92911';
     var s = document.createElement('script');
     s.type = 'text/javascript';
@@ -523,6 +524,6 @@
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x);
 </script>
-    
+
 </body>
 </html>
