@@ -15,7 +15,7 @@
             height: 100%;
         }
 
-          .container {
+        .container {
             display: flex;
             background: white;
             padding: 10px;
@@ -24,10 +24,10 @@
             max-width: 600px;
             width: 100%;
         }
-
-        .left-side {
+		
+		 .left-side {
             flex: 1;
-            margin-right: 20px;
+            
         }
 
         .right-side {
@@ -65,49 +65,91 @@
             background-color: #45a049;
         }
 
-        .caution {
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .popup-header h2 {
+            margin: 0;
+        }
+
+        .popup-close {
+            background: black;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .popup-content {
             margin-top: 20px;
-            color: red;
-            font-size: 14px;
         }
 
-        .info {
-            margin-bottom: 20px;
-        }
-
-        .logo img {
+        .popup img {
             max-width: 60%;
             height: auto;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
+
     </style>
     <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
-    <div class="container">
-        <div class="left-side">
-            <div class="logo">
-                <img src="logo.png" alt="GetDataGh Logo"> <!-- Replace with your logo path -->
+    <div class="container" >
+	
+	
+	
+        <div class="right-side" >
+		
+		<div class="logo" style="text-align: center;">
+                <img src="logo.png" style="border-radius: 20%;height:90px;width:90px" alt="GetDataGh Logo"> <!-- Replace with your logo path -->
             </div>
-            <div class="info">
+            <div class="info" style="text-align: center;">
                 <strong>JEST DATA Bundles</strong>
             </div>
-            <div class="info">
-                0541709799 0591132368
-            </div>
+            <div class="info" style="text-align: center;">
+                0541709799 or  0556874222
+            </div><br>
             <!-- Button to show caution popup -->
-            <button onclick="showPopup()">Caution Messages</button>
+           <button onclick="showPopup()" style="display: block; margin: 0 auto;">Caution Messages</button>
+
+           
             
-            <div id="cautionPopup" class="popup">
-            </div>
-            
-            <div class="info">
+            <div class="info" style="text-align: center;">
                 1. Please note that data sent to a wrong number cannot be refunded.<br><br>
                 2. MTN Data transfer can take up to 2 hours to reflect.
-            </div>
-        </div>
-        
-        <div class="right-side">
+            </div><br><br>
+            
+			
+			
+
             <!-- MTN Internet Bundles -->
             <div class="logo">
                 <img src="mtn.png" style="border-radius: 20%;height:90px;width:90px" alt="MTN Logo"> <!-- Replace with your MTN logo path -->
@@ -146,7 +188,7 @@
             </form>
             <div id="mtnMessage"></div>
 
-            <!-- Telecel Internet Bundles -->
+           <!-- Telecel Internet Bundles -->
             <div class="logo">
                 <img src="tele.jpg" style="border-radius: 20%;height:90px;width:90px" alt="Telecel Logo"> <!-- Replace with Telecel logo path -->
             </div>
@@ -173,6 +215,7 @@
             </form>
             <div id="telecelMessage"></div>
 
+            <!-- Airtel Tigo Internet Bundles -->
             <!-- Airtel Tigo Internet Bundles -->
             <div class="logo">
                 <img src="air.png" style="border-radius: 20%;height:90px;width:90px" alt="Airtel Tigo Logo"> <!-- Replace with Airtel Tigo logo path -->
@@ -215,12 +258,63 @@
                 <button type="submit">Purchase</button>
             </form>
             <div id="airteltigoMessage"></div>
+       
+
+        <!-- Results Checker -->
+        <div class="logo">
+                <img src="bu.png" style="border-radius: 20%;height:90px;width:90px" alt="Results Checker Logo"> <!-- Replace with your Results Checker logo path -->
+            </div>
+            <h1>Results Checker</h1>
+            <form id="resultsCheckerForm">
+                <label for="resultsCheckerAmount">Select Offer</label>
+                <select id="resultsCheckerAmount" name="resultsCheckerAmount">
+                    <option>Select Offer</option>
+                    <option value="offer1">BECE Checker - 25 GHC</option>
+                    <option value="offer2">WASSCE Checker - 30 GHC</option>
+                </select>
+
+                <button type="submit">Purchase</button>
+            </form>
+            <div id="resultsCheckerMessage"></div>
+    </div>
+</div>
+
+<!-- Popup overlay -->
+<div class="popup-overlay" id="popupOverlay"></div>
+
+<!-- Popup content -->
+<div class="popup" id="popup">
+    <div class="popup-header">
+        <h2>JEST DATA Bundles</h2>
+        <button class="popup-close" onclick="closePopup()">&times;</button>
+    </div>
+    <div class="popup-content">
+       <img src="logo.png" style="display: block; margin: 0 auto;" alt="GetDataGh Logo">
+
+        <div class="info">0541709799 or 0554366973</div><br>
+        <div class="info"> 
+            <strong>Caution Messages:</strong>
+            <p>1. Please note that data sent to a wrong number cannot be refunded.</p>
+            <p>2. MTN Data transfer can take up to 2 hours to reflect.</p>
         </div>
     </div>
+</div>
 
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script>
-        document.getElementById('mtnBundleForm').addEventListener('submit', function(event) {
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('popupOverlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+    });
+
+    function closePopup() {
+        document.getElementById('popupOverlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Existing JavaScript code for form submissions
+
+     document.getElementById('mtnBundleForm').addEventListener('submit', function(event) {
             event.preventDefault();
             handleBundlePurchase('mtn');
         });
@@ -486,9 +580,43 @@
 
             document.getElementById(network + 'Price').value = price;
         }
-    </script>
-	
-	<script>
+		
+		
+    // Function to handle form submission for Results Checker
+        document.getElementById('resultsCheckerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleResultsCheckerPurchase();
+        });
+
+        // Function to handle Results Checker purchase
+        function handleResultsCheckerPurchase() {
+            var offer = document.getElementById('resultsCheckerAmount').value;
+            var price = 0;
+            var purchaseLink = "";
+
+            switch (offer) {
+                case 'offer1':
+                    price = 25;
+                    purchaseLink = "https://paystack.com/pay/bece"; // Replace with your offer1 purchase link
+                    break;
+                case 'offer2':
+                    price = 30;
+                    purchaseLink = "https://paystack.com/pay/wassce"; // Replace with your offer2 purchase link
+                    break;
+                default:
+                    document.getElementById('resultsCheckerMessage').textContent = "Invalid offer selected.";
+                    return;
+            }
+
+            // Redirect to the purchase link
+            window.location.href = purchaseLink;
+        }
+    
+</script>
+
+
+
+<script>
     var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?92911';
     var s = document.createElement('script');
     s.type = 'text/javascript';
@@ -524,6 +652,5 @@
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x);
 </script>
-
 </body>
 </html>
